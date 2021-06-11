@@ -17,12 +17,13 @@ a simple interface for calling a function in response to a MySQL binlog event.
              :server-id 5
              :tables    [:users]})
 
-(def handler (fn [[op table id content metadata]]
-               (println (str "Operation: " op)) ;; :upsert or :delete
-               (println (str "Table: " table)) ;; the database table of the row as a keyword
-               (println (str "Id: " id)) ;; id of the row
-               (println (str "Content: " content)) ;; full content of the row as a clojure map
-               (println (str "Metadata: " metadata)))) ;; info about the binlog event
+(defn handler
+  [[op table id content metadata]]
+  (println (str "Operation: " op)) ;; :upsert or :delete
+  (println (str "Table: " table)) ;; the database table of the row as a keyword -->
+  (println (str "Id: " id)) ;; id of the row
+  (println (str "Content: " content)) ;; full content of the row as a clojure map
+  (println (str "Metadata: " metadata))) ;; info about the binlog event
 
 (def stream (binlog/tail! config handler))
 ```
