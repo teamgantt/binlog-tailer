@@ -2,11 +2,14 @@
  :deps  {org.clojure/clojure  {:mvn/version "1.10.3"}
          com.teamgantt/dumpa  {:mvn/version "0.0.3"}}
  :aliases
- {:dev    {:extra-paths ["dev/src"]
-           :extra-deps  {mount/mount {:mvn/version "0.1.16"}}}
-  
-  :jar    {:extra-deps {seancorfield/depstar {:mvn/version "1.1.104"}}
-           :main-opts  ["-m" "hf.depstar.jar" "teamgantt.binlog-tailer.jar"]}
-  
-  :deploy {:extra-deps {deps-deploy/deps-deploy {:mvn/version "0.0.9"}}
-           :main-opts  ["-m" "deps-deploy.deps-deploy" "deploy" "thlack.surfs.jar"]}}}
+ {:dev     {:extra-paths ["dev/src"]
+            :extra-deps  {mount/mount {:mvn/version "0.1.16"}}}
+
+  :jar     {:extra-deps {seancorfield/depstar {:mvn/version "1.1.104"}}
+            :main-opts  ["-m" "hf.depstar.jar" "teamgantt.binlog-tailer.jar"]}
+
+  :install {:extra-deps {deps-deploy/deps-deploy {:mvn/version "0.0.9"}}
+            :main-opts  ["-m" "deps-deploy.deps-deploy" "install" "teamgantt.binlog-tailer.jar"]}
+
+  :deploy  {:extra-deps {deps-deploy/deps-deploy {:mvn/version "0.0.9"}}
+            :main-opts  ["-m" "deps-deploy.deps-deploy" "deploy" "teamgantt.binlog-tailer.jar"]}}}
