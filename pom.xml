@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <packaging>jar</packaging>
+  <groupId>com.teamgantt</groupId>
+  <artifactId>binlog-tailer</artifactId>
+  <version>0.1.0</version>
+  <name>teamgantt.binlog-tailer</name>
+  <description>A simple clojure interface for calling functions when a mysql binlog event occurs.</description>
+  <url>https://github.com/teamgantt/binlog-tailer</url>
+  <licenses>
+    <license>
+      <name>Eclipse Public License</name>
+      <url>http://www.eclipse.org/legal/epl-v10.html</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Brian Scaturro</name>
+    </developer>
+  </developers>
+  <scm>
+    <url>https://github.com/teamgantt/binlog-tailer.git</url>
+    <connection>scm:git:git://github.com/teamgantt/binlog-tailer.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/teamgantt/binlog-tailer.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+  <dependencies>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>clojure</artifactId>
+      <version>1.10.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.teamgantt</groupId>
+      <artifactId>dumpa</artifactId>
+      <version>0.0.3</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+  </build>
+  <repositories>
+    <repository>
+      <id>clojars</id>
+      <url>https://repo.clojars.org/</url>
+    </repository>
+  </repositories>
+</project>
