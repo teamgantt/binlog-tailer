@@ -3,6 +3,8 @@
 A higher level abstraction over the [dumpa](https://github.com/teamgantt/dumpa) lib. Aims to provide
 a simple interface for calling a function in response to a MySQL binlog event.
 
+[![Clojars Project](https://img.shields.io/clojars/v/com.teamgantt/binlog-tailer.svg)](https://clojars.org/com.teamgantt/binlog-tailer)
+
 ## Usage
 
 ```clojure
