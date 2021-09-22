@@ -21,7 +21,7 @@
 
 (s/def ::table keyword?)
 
-(s/def ::tables (s/coll-of ::table :kind vector?))
+(s/def ::tables (s/coll-of ::table :kind set?))
 
 (s/def ::callbacks (s/map-of ::event fn?))
 

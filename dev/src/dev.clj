@@ -8,7 +8,8 @@
              :port      3308
              :db        "tailer"
              :server-id 5
-             :tables    [:users]})
+             :tables    #{:users}
+             :callbacks {:on-disconnect #(println "disconnected")}})
 
 (def handler (fn [[op table id content metadata]]
                (println (str "Operation: " op))
