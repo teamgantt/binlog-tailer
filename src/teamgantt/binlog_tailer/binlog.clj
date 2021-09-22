@@ -4,29 +4,20 @@
   (:import [com.github.shyiko.mysql.binlog BinaryLogClient]))
 
 (defn- get-binlog-position
-  "Get the bin log position that will be used to begin tailing from"
-  [table-stream]
-  (dumpa/next-position table-stream))
-
-(defn- make-table-stream!
-  "Create a table stream and start it"
-  [conf tables]
-  (let [table-stream (dumpa/create-table-stream conf tables)
-        source       (dumpa/source table-stream)]
-    (s/consume constantly source) ; setup a no-op consumer to avoid backpressure
-    (dumpa/start-stream! table-stream)
-    table-stream))
+  "Get the bin log position that will be used to begin tailing from."
+  [conf]
+  (dumpa/binlog-position conf))
 
 (defn- make-binlog-stream
   "Create a binlog stream"
-  [conf table-stream]
-  (let [binlog-pos (get-binlog-position table-stream)]
-    (if (dumpa/valid-binlog-pos? conf binlog-pos)
-      (dumpa/create-binlog-stream conf binlog-pos)
+  [conf tables]
+  (let [binlog-pos (get-binlog-position conf)]
+    (if-not (dumpa/valid-binlog-pos? conf binlog-pos)
       (throw
-        (ex-info "Invalid binlog position"
-          {:position binlog-pos
-           :config   conf})))))
+       (ex-info "Invalid binlog position"
+                {:position binlog-pos
+                 :config   conf}))
+      (dumpa/create-binlog-stream conf binlog-pos tables))))
 
 (defn- on-failure
   "Forces a disconnect on a communication failure"
@@ -49,8 +40,8 @@
 (defn tail!
   [config-map callback]
   (let [conf          (dumpa/create-conf config-map (event-callbacks config-map))
-        table-stream  (make-table-stream! conf (get config-map :tables []))
-        binlog-stream (make-binlog-stream conf table-stream)
+        tables        (get config-map :tables)
+        binlog-stream (make-binlog-stream conf tables)
         source        (dumpa/source binlog-stream)]
     (s/consume callback source)
     (dumpa/start-stream! binlog-stream)

@@ -17,7 +17,7 @@ a simple interface for calling a function in response to a MySQL binlog event.
              :port      3308
              :db        "tailer"
              :server-id 5
-             :tables    [:users]})
+             :tables    #{users}})
 
 (defn handler
   [[op table id content metadata]]
