@@ -4,7 +4,7 @@
   <packaging>jar</packaging>
   <groupId>com.teamgantt</groupId>
   <artifactId>binlog-tailer</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
   <name>teamgantt.binlog-tailer</name>
   <description>A simple clojure interface for calling functions when a mysql binlog event occurs.</description>
   <url>https://github.com/teamgantt/binlog-tailer</url>
