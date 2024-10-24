@@ -1,6 +1,6 @@
 {:paths ["src"]
  :deps  {org.clojure/clojure  {:mvn/version "1.10.3"}
-         com.teamgantt/dumpa  {:mvn/version "0.0.3"}}
+         io.github.teamgantt/dumpa  {:git/sha "a811053feea8e629d0cd7951836924b8f40ccf67"}}
  :aliases
  {:dev     {:extra-paths ["dev/src"]
             :extra-deps  {mount/mount {:mvn/version "0.1.16"}}}
